@@ -7,15 +7,17 @@ Module.register("MMM-WiFiPassword", {
 	  network: "REQUIRED", // Your Network ID
 	  password: "REQUIRED", // Your Network Password
 	  hiddenId: false, // Whether your Network ID is hidden
+	  debug: false
   },
   
   start: function () {
 	  this.auth = "";
 	  
-	  switch(this.config.authType.toLowerCase()) {
-		case "wpa":
-		case "wep":
-			this.auth = this.config.authType;
+	  switch(this.config.authType.toUpperCase()) {
+		case "WPA":
+		//case "WPA2":
+		case "WEP":
+			this.auth = this.config.authType.toUpperCase();
 			break;
 		case "none":
 			this.auth = "nopass";
@@ -60,6 +62,13 @@ Module.register("MMM-WiFiPassword", {
 	  networkTypeDiv.className = "text network-type";
 	  networkTypeDiv.innerHTML = "<b>Authentication Type:</b> " + this.config.authType.toUpperCase();
 	  div.appendChild(networkTypeDiv);
+	  
+	  if (this.config.debug) {
+		  var debugDiv = document.createElement("p");
+		  debugDiv.className = "text debug";
+		  debugDiv.innerHTML = "<b>QR String:</b> " + this.qrText;
+		  div.appendChild(debugDiv);
+	  }
 	  	  
 	  return div;
   },
