@@ -3,6 +3,9 @@ Magic Mirror Module that displays your WiFi Network, Password, and QRCode so peo
 
 ## Screenshot
 
+![MMM-WifiPassword Screenshot](https://raw.githubusercontent.com/TeraTech/MMM-WiFiPassword/master/mm.png)
+
+
 ## Installation
   1. In your terminal, change to your Magic Mirror module directory
 
