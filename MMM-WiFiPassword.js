@@ -41,7 +41,10 @@ Module.register("MMM-WiFiPassword", {
 	  var div = document.createElement("div");
 	  div.id = "WiFiPassword";
 	  div.className = "text";
-	  div.innerHTML = "Local WiFi Details";
+	  
+	  var header = document.createElement('header');
+          header.innerHTML = "Local WiFi Details";
+          div.appendChild(header);
 	  
 	  var qrDiv = document.createElement("div");
 	  qrDiv.id = "qrdiv";
