@@ -45,6 +45,7 @@ modules:[
 | `network`  | Your network SSID. | REQUIRED |
 | `password`  | Your network Password. | REQUIRED |
 | `hiddenId`  | Whether your SSID is hidden. | false |
+| `layoutVertical`  | Whether to display in vertical (true), or horizontal (false) mode.  | true |
 | `showNetwork`  | Show network SSID. | true |
 | `showPassword`  | Show your network password. | true |
 | `showAuthType`  | Show your authentication type. | true |

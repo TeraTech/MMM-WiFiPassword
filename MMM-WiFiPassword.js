@@ -7,6 +7,7 @@ Module.register("MMM-WiFiPassword", {
 	  network: "REQUIRED", // Your Network ID
 	  password: "REQUIRED", // Your Network Password
 	  hiddenId: false, // Whether your Network ID is hidden
+	  layoutVertical: true, // Whether to display in vertical (true), or horizontal (false) mode. 
 	  showNetwork: true, // Display network name
 	  showPassword: true, // Display password
 	  showAuthType: true, // Dispay authentication type
@@ -44,42 +45,56 @@ Module.register("MMM-WiFiPassword", {
 	  var div = document.createElement("div");
 	  div.id = "WiFiPassword";
 	  div.className = "text";
+	  if (!this.config.layoutVertical) {
+		  div.style.height = this.config.qrSize + "px";
+	  }
 	  
 	  var header = document.createElement('header');
-          header.innerHTML = "Local WiFi Details";
-          div.appendChild(header);
+	  header.innerHTML = "Local WiFi Details";
+      div.appendChild(header);
 	  
 	  var qrDiv = document.createElement("div");
 	  qrDiv.id = "qrdiv";
 	  qrDiv.className = "qr-image";
+	  qrDiv.style = "width=" + this.config.qrSize + "px";
+	  if (this.config.layoutVertical) {
+		qrDiv.className += " layout-vertical";
+	  } else {
+		qrDiv.className += " layout-horizontal";
+	  }  
 	  div.appendChild(qrDiv);
-	  
+
+	  var textDiv = document.createElement("div");
+	  textDiv.id = "textDiv";
+	  div.appendChild(textDiv);
+	
+
 	  if (this.config.showNetwork) {
 		var networkNameDiv = document.createElement("p");
 		networkNameDiv.className = "text network";
 		networkNameDiv.innerHTML = "<b>Network:</b> " + this.config.network;
-	  	div.appendChild(networkNameDiv);
+		textDiv.appendChild(networkNameDiv);
 	  }
 	  
 	  if (this.config.showPassword) {
 		var networkPassDiv = document.createElement("p");
 	  	networkPassDiv.className = "text password";
 	  	networkPassDiv.innerHTML = "<b>Password:</b> " + this.config.password;
-	  	div.appendChild(networkPassDiv);
+	  	textDiv.appendChild(networkPassDiv);
 	  }
 	 
 	  if (this.config.showAuthType) {
 		var networkTypeDiv = document.createElement("p");
 	  	networkTypeDiv.className = "text network-type";
 	  	networkTypeDiv.innerHTML = "<b>Authentication Type:</b> " + this.config.authType.toUpperCase();
-	  	div.appendChild(networkTypeDiv);
+	  	textDiv.appendChild(networkTypeDiv);
 	  }
 	  
 	  if (this.config.debug) {
-		  var debugDiv = document.createElement("p");
-		  debugDiv.className = "text debug";
-		  debugDiv.innerHTML = "<b>QR String:</b> " + this.qrText;
-		  div.appendChild(debugDiv);
+		var debugDiv = document.createElement("p");
+		debugDiv.className = "text debug";
+		debugDiv.innerHTML = "<b>QR String:</b> " + this.qrText;
+		textDiv.appendChild(debugDiv);
 	  }
 	  	  
 	  return div;
