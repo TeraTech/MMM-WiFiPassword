@@ -42,11 +42,11 @@ modules:[
 | `colorDark`  | The color of the "dark" area of the QRCode. | #fff |
 | `colorLight`  | The color of the "light" area of the QRCode. | #000 |
 | `authType`  | Your authentication type. Options are `WPA` `WEP` `NONE` | WPA |
-| `network`  | Your Network SSID. | REQUIRED |
-| `password`  | Your Network Password. | REQUIRED |
+| `network`  | Your network SSID. | REQUIRED |
+| `password`  | Your network Password. | REQUIRED |
 | `hiddenId`  | Whether your SSID is hidden. | false |
-| `showNetwork`  | Whether your SSID is hidden. | true |
-| `showPassword`  | Whether your SSID is hidden. | true |
-| `showAuthType`  | Whether your SSID is hidden. | true |
+| `showNetwork`  | Show network SSID. | true |
+| `showPassword`  | Show your network password. | true |
+| `showAuthType`  | Show your authentication type. | true |
 | `debug`  | Displays raw QR text. | false |
 
