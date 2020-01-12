@@ -45,5 +45,8 @@ modules:[
 | `network`  | Your Network SSID. | REQUIRED |
 | `password`  | Your Network Password. | REQUIRED |
 | `hiddenId`  | Whether your SSID is hidden. | false |
+| `showNetwork`  | Whether your SSID is hidden. | true |
+| `showPassword`  | Whether your SSID is hidden. | true |
+| `showAuthType`  | Whether your SSID is hidden. | true |
 | `debug`  | Displays raw QR text. | false |
 
