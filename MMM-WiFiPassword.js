@@ -7,6 +7,9 @@ Module.register("MMM-WiFiPassword", {
 	  network: "REQUIRED", // Your Network ID
 	  password: "REQUIRED", // Your Network Password
 	  hiddenId: false, // Whether your Network ID is hidden
+	  showNetwork: true, // Display network name
+	  showPassword: true, // Display password
+	  showAuthType: true, // Dispay authentication type
 	  debug: false
   },
   
@@ -51,20 +54,26 @@ Module.register("MMM-WiFiPassword", {
 	  qrDiv.className = "qr-image";
 	  div.appendChild(qrDiv);
 	  
-	  var networkNameDiv = document.createElement("p");
-	  networkNameDiv.className = "text network";
-	  networkNameDiv.innerHTML = "<b>Network:</b> " + this.config.network;
-	  div.appendChild(networkNameDiv);
+	  if (this.config.showNetwork) {
+		var networkNameDiv = document.createElement("p");
+		networkNameDiv.className = "text network";
+		networkNameDiv.innerHTML = "<b>Network:</b> " + this.config.network;
+	  	div.appendChild(networkNameDiv);
+	  }
 	  
-	  var networkPassDiv = document.createElement("p");
-	  networkPassDiv.className = "text password";
-	  networkPassDiv.innerHTML = "<b>Password:</b> " + this.config.password;
-	  div.appendChild(networkPassDiv);
-	  
-	  var networkTypeDiv = document.createElement("p");
-	  networkTypeDiv.className = "text network-type";
-	  networkTypeDiv.innerHTML = "<b>Authentication Type:</b> " + this.config.authType.toUpperCase();
-	  div.appendChild(networkTypeDiv);
+	  if (this.config.showPassword) {
+		var networkPassDiv = document.createElement("p");
+	  	networkPassDiv.className = "text password";
+	  	networkPassDiv.innerHTML = "<b>Password:</b> " + this.config.password;
+	  	div.appendChild(networkPassDiv);
+	  }
+	 
+	  if (this.config.showAuthType) {
+		var networkTypeDiv = document.createElement("p");
+	  	networkTypeDiv.className = "text network-type";
+	  	networkTypeDiv.innerHTML = "<b>Authentication Type:</b> " + this.config.authType.toUpperCase();
+	  	div.appendChild(networkTypeDiv);
+	  }
 	  
 	  if (this.config.debug) {
 		  var debugDiv = document.createElement("p");
