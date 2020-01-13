@@ -38,16 +38,16 @@ modules:[
 
 | Option | Description | Default |
 | ------------- | ------------- | ------------- |
-| `qrSize`  | The width and height of QRCode. | 125 |
-| `colorDark`  | The color of the "dark" area of the QRCode. | #fff |
-| `colorLight`  | The color of the "light" area of the QRCode. | #000 |
+| `qrSize`  | The width and height of QRCode in pixels. | 125 |
+| `colorDark`  | The color of the "dark" area of the QRCode in hex. | #fff |
+| `colorLight`  | The color of the "light" area of the QRCode in hex. | #000 |
 | `authType`  | Your authentication type. Options are `WPA` `WEP` `NONE` | WPA |
 | `network`  | Your network SSID. | REQUIRED |
 | `password`  | Your network Password. | REQUIRED |
-| `hiddenId`  | Whether your SSID is hidden. | false |
-| `layoutVertical`  | Whether to display in vertical (true), or horizontal (false) mode.  | true |
-| `showNetwork`  | Show network SSID. | true |
-| `showPassword`  | Show your network password. | true |
-| `showAuthType`  | Show your authentication type. | true |
-| `debug`  | Displays raw QR text. | false |
+| `hiddenId`  | Whether your SSID is hidden. `true` `false` | false |
+| `layoutVertical`  | Whether to display in vertical (`true`), or horizontal (`false`) mode.  | true |
+| `showNetwork`  | Show network SSID. `true` `false`| true |
+| `showPassword`  | Show your network password. `true` `false` | true |
+| `showAuthType`  | Show your authentication type. `true` `false` | true |
+| `debug`  | Displays raw QR text. `true` `false` | false |
 
