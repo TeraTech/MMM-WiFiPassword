@@ -14,7 +14,7 @@ Note that if you have special characters in your password, the QR code will not 
     `cd ~/MagicMirror/modules`
   
   2. Clone this repository
-  `git clone git@github.com:TeraTech/MMM-WiFiPassword.git`
+  `git clone https://github.com/TeraTech/MMM-WiFiPassword.git`
   
   3. Make changes to your `config.js` file.  
   
