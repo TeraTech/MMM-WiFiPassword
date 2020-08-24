@@ -6,6 +6,7 @@ Module.register("MMM-WiFiPassword", {
 	  authType: "WPA", // WEP, WPA, NONE
 	  network: "REQUIRED", // Your Network ID
 	  password: "REQUIRED", // Your Network Password
+	  header: "Local WiFi Details", // Default heading
 	  hiddenId: false, // Whether your Network ID is hidden
 	  layoutVertical: true, // Whether to display in vertical (true), or horizontal (false) mode. 
 	  showNetwork: true, // Display network name
@@ -50,7 +51,7 @@ Module.register("MMM-WiFiPassword", {
 	  }
 	  
 	  var header = document.createElement('header');
-	  header.innerHTML = "Local WiFi Details";
+	  header.innerHTML = this.config.header;
 	  div.appendChild(header);
 	  
 	  var qrDiv = document.createElement("div");
