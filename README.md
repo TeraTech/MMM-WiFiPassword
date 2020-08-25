@@ -44,6 +44,7 @@ modules:[
 | `network`  | Your network SSID. | REQUIRED |
 | `password`  | Your network Password. | REQUIRED |
 | `hiddenId`  | Whether your SSID is hidden. `true` `false` | false |
+| `header`  | Custom header text.  | Local WiFi Details | 
 | `layoutVertical`  | Whether to display in vertical (`true`), or horizontal (`false`) mode.  | true |
 | `showNetwork`  | Show network SSID. `true` `false`| true |
 | `showPassword`  | Show your network password. `true` `false` | true |
