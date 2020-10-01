@@ -1,8 +1,8 @@
 Module.register("MMM-WiFiPassword", {  
   defaults: {
 	  qrSize: 125,
-	  colorDark: "#fff",
-	  colorLight: "#000",
+	  colorDark: "#000",
+	  colorLight: "#fff",
 	  authType: "WPA", // WEP, WPA, NONE
 	  network: "REQUIRED", // Your Network ID
 	  password: "REQUIRED", // Your Network Password
@@ -57,7 +57,7 @@ Module.register("MMM-WiFiPassword", {
 	  var qrDiv = document.createElement("div");
 	  qrDiv.id = "qrdiv";
 	  qrDiv.className = "qr-image";
-	  qrDiv.style = "width=" + this.config.qrSize + "px";
+	  qrDiv.style = "width:" + this.config.qrSize + "px; background-color:" + this.config.colorLight;
 	  if (this.config.layoutVertical) {
 		qrDiv.className += " layout-vertical";
 	  } else {
