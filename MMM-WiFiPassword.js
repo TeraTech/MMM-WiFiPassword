@@ -122,8 +122,30 @@ Module.register("MMM-WiFiPassword", {
 		  };
 		  
 		  var qrCode = new QRCode(qrDiv, qrOptions);
-		  
 		  break;
+
+		  case "WIFIPASSWORD_MODAL":
+			var fetchQrCode = document.getElementById("qrdiv").innerHTML;
+			this.sendNotification("OPEN_MODAL", {
+			  template: "WifiPasswordModal.njk",
+			  data: {
+				// Send config as data input to template
+				layoutVertical: this.config.layoutVertical,
+				qrSize: this.config.qrSize,
+				header: this.config.header,
+				colorLight: this.config.colorLight,
+				network: this.config.network,
+				password: this.config.password,
+				authType: this.config.authType,
+				showNetwork: this.config.showNetwork,
+				showPassword: this.config.showPassword,
+				showAuthType: this.config.showAuthType,
+				debug: this.config.debug,
+				// Send actual content
+				content: fetchQrCode,
+			  },
+			});
+			break;
 	  }
   },
   

@@ -51,3 +51,15 @@ modules:[
 | `showAuthType`  | Show your authentication type. `true` `false` | true |
 | `debug`  | Displays raw QR text. `true` `false` | false |
 
+## Notifications
+
+You can interact with this module with the following `notifications`:
+
+| Notification | Payload | Description | Requirements |
+| ------------ | ------- | ----------- | ------------ |
+| `WIFIPASSWORD_MODAL`  | - | When receiving this notification, the module will Open a modal popup where it shows the QR code. Useful for integrations with touch screens | [MMM-Modal](https://github.com/fewieden/MMM-Modal) |
+
+
+## Supported modules
+
+This module has support for ["MMM-Modal"](https://github.com/fewieden/MMM-Modal). See [Notifications](#notifications) above.
