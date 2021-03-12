@@ -109,41 +109,41 @@ Module.register("MMM-WiFiPassword", {
   },
   
   notificationReceived: function(notification, payload, sender) {
-	  switch(notification) {
+	switch(notification) {
 		case "DOM_OBJECTS_CREATED":
-		  var qrDiv = document.getElementById("qrdiv");
-		  var qrOptions = {
-			  text: this.qrText,
-			  width: this.config.qrSize,
-			  height: this.config.qrSize,
-			  colorDark: this.config.colorDark,
-			  colorLight: this.config.colorLight,
-			  correctLevel: QRCode.CorrectLevel.H
-		  };
+			var qrDiv = document.getElementById("qrdiv");
+			var qrOptions = {
+				text: this.qrText,
+				width: this.config.qrSize,
+				height: this.config.qrSize,
+				colorDark: this.config.colorDark,
+				colorLight: this.config.colorLight,
+				correctLevel: QRCode.CorrectLevel.H
+			};
 		  
-		  var qrCode = new QRCode(qrDiv, qrOptions);
-		  break;
+			var qrCode = new QRCode(qrDiv, qrOptions);
+			break;
 
-		  case "WIFIPASSWORD_MODAL":
+		case "WIFIPASSWORD_MODAL":
 			var fetchQrCode = document.getElementById("qrdiv").innerHTML;
 			this.sendNotification("OPEN_MODAL", {
-			  template: "WifiPasswordModal.njk",
-			  data: {
-				// Send config as data input to template
-				layoutVertical: this.config.layoutVertical,
-				qrSize: this.config.qrSize,
-				header: this.config.header,
-				colorLight: this.config.colorLight,
-				network: this.config.network,
-				password: this.config.password,
-				authType: this.config.authType,
-				showNetwork: this.config.showNetwork,
-				showPassword: this.config.showPassword,
-				showAuthType: this.config.showAuthType,
-				debug: this.config.debug,
-				// Send actual content
-				content: fetchQrCode,
-			  },
+				template: "WifiPasswordModal.njk",
+				data: {
+					// Send config as data input to template
+					layoutVertical: this.config.layoutVertical,
+					qrSize: this.config.qrSize,
+					header: this.config.header,
+					colorLight: this.config.colorLight,
+					network: this.config.network,
+					password: this.config.password,
+					authType: this.config.authType,
+					showNetwork: this.config.showNetwork,
+					showPassword: this.config.showPassword,
+					showAuthType: this.config.showAuthType,
+					debug: this.config.debug,
+					// Send actual content
+					content: fetchQrCode,
+				},
 			});
 			break;
 	  }
