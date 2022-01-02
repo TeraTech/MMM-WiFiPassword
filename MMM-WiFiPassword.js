@@ -50,9 +50,11 @@ Module.register("MMM-WiFiPassword", {
 		  div.style.height = this.config.qrSize + "px";
 	  }
 	  
-	  var header = document.createElement('header');
-	  header.innerHTML = this.config.header;
-	  div.appendChild(header);
+	  if (this.config.header){
+	  	var header = document.createElement('header');
+	  	header.innerHTML = this.config.header;
+	  	div.appendChild(header);
+	  }
 	  
 	  var qrDiv = document.createElement("div");
 	  qrDiv.id = "qrdiv";
