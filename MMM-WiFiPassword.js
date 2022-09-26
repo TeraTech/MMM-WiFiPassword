@@ -112,7 +112,7 @@ Module.register("MMM-WiFiPassword", {
   
   notificationReceived: function(notification, payload, sender) {
 	switch(notification) {
-		case "DOM_OBJECTS_CREATED":
+		case "MODULE_DOM_CREATED":
 			var qrDiv = document.getElementById("qrdiv");
 			var qrOptions = {
 				text: this.qrText,
