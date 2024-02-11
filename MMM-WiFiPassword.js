@@ -39,7 +39,33 @@ Module.register("MMM-WiFiPassword", {
 	  ";P:" + this.config.password +
 	  ";H:" + this.config.hiddenId +
 	  ";";
-	  
+
+	  // add a hidden qr code to the document to use for modals
+
+	  // Create the qr div here to be able to use it if it is only used as a modal
+	  this.qrDiv = document.createElement("div");
+	  this.qrDiv.id = "qrdiv";
+	  this.qrDiv.className = "qr-image";
+	  this.qrDiv.style = "width:" + this.config.qrSize + "px; background-color:" + this.config.colorLight;
+	  if (this.config.layoutVertical) {
+		  this.qrDiv.className += " layout-vertical";
+	  } else {
+		  this.qrDiv.className += " layout-horizontal";
+	  }
+
+	  this.qrDiv.style.display = "none";
+	  document.body.appendChild(this.qrDiv);
+
+	  var qrOptions = {
+		  text: this.qrText,
+		  width: this.config.qrSize,
+		  height: this.config.qrSize,
+		  colorDark: this.config.colorDark,
+		  colorLight: this.config.colorLight,
+		  correctLevel: QRCode.CorrectLevel.H
+	  };
+
+	  var qrCode = new QRCode(this.qrDiv, qrOptions);
   },
   
   getDom: function() {
@@ -56,16 +82,7 @@ Module.register("MMM-WiFiPassword", {
 	  	div.appendChild(header);
 	  }
 	  
-	  var qrDiv = document.createElement("div");
-	  qrDiv.id = "qrdiv";
-	  qrDiv.className = "qr-image";
-	  qrDiv.style = "width:" + this.config.qrSize + "px; background-color:" + this.config.colorLight;
-	  if (this.config.layoutVertical) {
-		qrDiv.className += " layout-vertical";
-	  } else {
-		qrDiv.className += " layout-horizontal";
-	  }  
-	  div.appendChild(qrDiv);
+	  div.appendChild(this.qrDiv);
 
 	  var textDiv = document.createElement("div");
 	  textDiv.id = "textDiv";
@@ -113,21 +130,11 @@ Module.register("MMM-WiFiPassword", {
   notificationReceived: function(notification, payload, sender) {
 	switch(notification) {
 		case "MODULE_DOM_CREATED":
-			var qrDiv = document.getElementById("qrdiv");
-			var qrOptions = {
-				text: this.qrText,
-				width: this.config.qrSize,
-				height: this.config.qrSize,
-				colorDark: this.config.colorDark,
-				colorLight: this.config.colorLight,
-				correctLevel: QRCode.CorrectLevel.H
-			};
-		  
-			var qrCode = new QRCode(qrDiv, qrOptions);
+			this.qrDiv.style.display = "block";
+
 			break;
 
 		case "WIFIPASSWORD_MODAL":
-			var fetchQrCode = document.getElementById("qrdiv").innerHTML;
 			this.sendNotification("OPEN_MODAL", {
 				template: "WifiPasswordModal.njk",
 				data: {
@@ -144,7 +151,7 @@ Module.register("MMM-WiFiPassword", {
 					showAuthType: this.config.showAuthType,
 					debug: this.config.debug,
 					// Send actual content
-					content: fetchQrCode,
+					content: this.qrDiv.innerHTML,
 				},
 			});
 			break;
